@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyBaseModule</string>
+    <string name="text1">点击发送</string>
+</resources>

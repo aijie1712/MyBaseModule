@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--发送验证码View-->
+    <declare-styleable name="SendVerifyCodeView">
+        <!--发送之前的文本提示-->
+        <attr name="before_send_text" format="reference|string" />
+        <!--发送中的文本提示-->
+        <attr name="send_ing" format="reference|string" />
+        <!--发送后的文本提示-->
+        <attr name="send_after" format="string|reference" />
+        <!--发送成功之后等待的时间-->
+        <attr name="wait_time" format="integer" />
+        <!--发送按钮的背景-->
+        <attr name="background" format="reference" />
+    </declare-styleable>
+    <!--圆形图片-->
+    <declare-styleable name="CircleImageView">
+        <attr name="myBorderWidth" format="reference|dimension"/>
+        <attr name="borderRadius" format="reference|dimension"/>
+        <attr name="borderColor" format="reference|color"/>
+        <attr name="hoverColor" format="reference|color"/>
+    </declare-styleable>
+</resources>
