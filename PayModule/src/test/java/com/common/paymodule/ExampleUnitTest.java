@@ -1,8 +1,6 @@
-package com.aiijie.mybasemodule;
+package com.common.paymodule;
 
 import org.junit.Test;
-
-import java.net.URLEncoder;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +13,5 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
-        System.out.print("结果："+ URLEncoder.encode("123"));
     }
 }

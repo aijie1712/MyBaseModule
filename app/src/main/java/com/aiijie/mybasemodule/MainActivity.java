@@ -1,5 +1,6 @@
 package com.aiijie.mybasemodule;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,5 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSendFail(View view) {
         sendVerifyView.onSendFail();
+    }
+
+    public void onClick(View v){
+        switch (v.getId()) {
+            case R.id.btn_go_pay:
+                startActivity(new Intent(this,PayTestActivity.class));
+                break;
+        }
     }
 }
