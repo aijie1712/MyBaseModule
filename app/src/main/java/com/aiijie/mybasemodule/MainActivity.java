@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View v){
         switch (v.getId()) {
-            case R.id.btn_go_pay:
+            case R.id.btn_go_pay:  // 支付测试
                 startActivity(new Intent(this,PayTestActivity.class));
+                break;
+            case R.id.btn_net: // 网络请求
+                startActivity(new Intent(this,NetTestActivity.class));
                 break;
         }
     }

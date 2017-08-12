@@ -46,7 +46,8 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <activity android:name=".PayTestActivity"/>
+        <activity android:name=".PayTestActivity" />
+        <activity android:name=".NetTestActivity"></activity>
     </application>
 
 </manifest>
