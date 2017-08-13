@@ -1,5 +1,6 @@
-package com.common.basemodule.net;
+package com.common.basemodule.net.client;
 
+import com.common.basemodule.net.NetConstant;
 import com.common.basemodule.net.callback.CallBack;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Map;
  */
 
 public abstract class RestClient {
-    protected String url = "";
+    protected String url = NetConstant.BSE_URL;
     // 请求头
     protected Map<String, String> headers = new HashMap<>();
     // 请求参数
@@ -41,6 +42,8 @@ public abstract class RestClient {
         this.url = url;
         return this;
     }
+
+    public abstract void init();
 
     public abstract void doGet(CallBack callBack);
 
