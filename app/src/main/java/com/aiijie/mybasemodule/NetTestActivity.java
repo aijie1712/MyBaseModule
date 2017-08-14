@@ -18,8 +18,6 @@ import java.util.List;
  * 网络库测试
  */
 public class NetTestActivity extends AppCompatActivity {
-    private final String params = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8f94b1f1bab669bf&redirect_uri=";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,7 @@ public class NetTestActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(String response) {
-                        LogUtils.i("短连接结果：" + response);
+                        LogUtils.i("结果：" + response);
                     }
                 });
     }

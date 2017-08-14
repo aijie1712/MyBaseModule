@@ -8,9 +8,12 @@ import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.common.basemodule.R;
+import com.common.basemodule.utils.RegularUtils;
 
 /**
  * Created by klx on 2017/8/12.
@@ -27,6 +30,8 @@ public class SendVerifyCodeView extends AppCompatTextView {
     private String afterSendText = "";  // 发送成功之后的文本提示
     private int waitTime = 60;  // 发送成功之后等待的时间
 
+    private EditText editText;  // 输入手机号的EditText
+
     public SendVerifyCodeView(Context context) {
         this(context, null);
     }
@@ -40,7 +45,7 @@ public class SendVerifyCodeView extends AppCompatTextView {
         init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(final Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SendVerifyCodeView);
         String text1 = a.getString(R.styleable.SendVerifyCodeView_before_send_text);
         String text2 = a.getString(R.styleable.SendVerifyCodeView_send_ing);
@@ -67,9 +72,38 @@ public class SendVerifyCodeView extends AppCompatTextView {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSending();
+                if (check()) {
+                    onSending();
+                }
             }
         });
+    }
+
+    /**
+     * 发送验证码之前检查手机号格式
+     */
+    private boolean check(){
+        if (editText == null) {
+            Toast.makeText(getContext(), "请先绑定控件", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        String phone = editText.getText().toString().trim();
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(getContext(), "请填写手机号", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!RegularUtils.isMobileSimple(phone)) {
+            Toast.makeText(getContext(), "手机号格式错误", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 绑定需要输入手机号的EditText
+     */
+    public void bindEditText(EditText editText){
+        this.editText = editText;
     }
 
     /**
@@ -104,10 +138,10 @@ public class SendVerifyCodeView extends AppCompatTextView {
         this.setText(sendingText);
     }
 
-    public class MyCountDownTimer extends CountDownTimer {
+    private class MyCountDownTimer extends CountDownTimer {
         private TextView target;
 
-        public MyCountDownTimer(long millisInFuture, long countDownInterval, TextView target) {
+        private MyCountDownTimer(long millisInFuture, long countDownInterval, TextView target) {
             super(millisInFuture, countDownInterval);
             this.target = target;
         }
